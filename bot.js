@@ -1,18 +1,18 @@
 const queue = new Map();
 
-client.once('ready', () => {
-    console.log('Bot je připojen!');
+client.once("ready", () => {
+    console.log("Bot je připojen!");
 });
 
-client.once('reconnecting', () => {
-    console.log('Bot se znovu připojuje!');
+client.once("reconnecting", () => {
+    console.log("Bot se znovu připojuje!");
 });
 
-client.once('disconnect', () => {
-    console.log('Bot byl odpojen!');
+client.once("disconnect", () => {
+    console.log("Bot byl odpojen!");
 });
 
-client.on('message', async message => {
+client.on("message", async message => {
     if (message.author.bot) return;
     if (!message.content.startsWith(prefix)) return;
 
@@ -28,7 +28,7 @@ client.on('message', async message => {
         stop(message, serverQueue);
         return;
     } else {
-        message.channel.send('Neplatný příkaz!');
+        message.channel.send("Neplatný příkaz!");
     }
 
     client.login("MTA5MzQ1NjI3NTc1NDQ3MTQzNQ.Gf3jMV.8JGqMLdJ3BnKxzgNifPVMHjgnsQLG9e3Wb_IUg")
@@ -39,13 +39,11 @@ async function execute(message, serverQueue) {
 
     const voiceChannel = message.member.voice.channel;
     if (!voiceChannel)
-        return message.channel.send(
-            'Musíte být v hlasovém kanálu, abyste mohli přehrát hudbu!'
-        );
+        return message.channel.send("Musíte být v hlasovém kanále, abyste mohli přehrát hudbu!");
     const permissions = voiceChannel.permissionsFor(message.client.user);
     if (!permissions.has('CONNECT') || !permissions.has('SPEAK')) {
         return message.channel.send(
-            'Potřebuji oprávnění k připojení se k hlasovému kanálu a mluvení v něm!'
+            "Potřebuji oprávnění k připojení se k hlasovému kanálu a mluvení v něm!'
         );
     }
 
@@ -87,21 +85,21 @@ async function execute(message, serverQueue) {
 function skip(message, serverQueue) {
     if (!message.member.voice.channel)
         return message.channel.send(
-            'Musíte být v hlasovém kanálu, abyste mohli přeskočit píseň!'
+            "Musíte být v hlasovém kanálu, abyste mohli přeskočit píseň!"
         );
     if (!serverQueue)
-        return message.channel.send('Nemohu přeskočit píseň, protože fronta je prázdná!');
+        return message.channel.send("Nemohu přeskočit píseň, protože fronta je prázdná!");
     serverQueue.connection.dispatcher.end();
 }
 
 function stop(message, serverQueue) {
     if (!message.member.voice.channel)
         return message.channel.send(
-            'Musíte být v hlasovém kanálu, abyste mohli zastavit přehrávání hudby!'
+            "Musíte být v hlasovém kanálu, abyste mohli zastavit přehrávání hudby!"
         );
 
     if (!serverQueue)
-        return message.channel.send('Nemohu zastavit přehrávání, protože fronta je prázdná!');
+        return message.channel.send("Nemohu zastavit přehrávání, protože fronta je prázdná!");
 
     serverQueue.songs = [];
     serverQueue.connection.dispatcher.end();
@@ -117,11 +115,11 @@ function play(guild, song) {
 
     const dispatcher = serverQueue.connection
         .play(ytdl(song.url))
-        .on('finish', () => {
+        .on("finish", () => {
             serverQueue.songs.shift();
             play(guild, serverQueue.songs[0]);
         })
-        .on('error', error => {
+        .on("error", error => {
             console.error(error);
         });
     dispatcher.setVolumeLogarithmic(serverQueue.volume / 5);
