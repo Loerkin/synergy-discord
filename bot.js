@@ -31,7 +31,8 @@ client.on("message", async message => {
         message.channel.send("Neplatný příkaz!");
     }
 
-    client.login("MTA5MzQ1NjI3NTc1NDQ3MTQzNQ.G3FknN.9cRsl0a7049OjA9m6wOMZCRs_Ir0_sJgAo07i8")
+    const config = require('./config.json');
+    client.login(MTA5MzQ1NjI3NTc1NDQ3MTQzNQ.G3FknN.9cRsl0a7049OjA9m6wOMZCRs_Ir0_sJgAo07i8)
 });
 
 async function execute(message, serverQueue) {
