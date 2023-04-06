@@ -78,8 +78,8 @@ async function execute(message, serverQueue) {
       queue.delete(message.guild.id);
       return message.channel.send(err);
     }
-  } else 
-  
+  } 
+  else
   {
     serverQueue.songs.push(song);
     return message.channel.send(`**${song.title}** byla přidána do fronty!`);
