@@ -3,6 +3,8 @@ const ytdl = require('ytdl-core');
 const client = new Discord.Client();
 const { prefix, token } = require('config.json');
 const config = require('config.json');
+const port = process.env.PORT || 5000;
+app.listen(port, () => console.log('listening song on port 5000'))
 
 const queue = new Map();
 
