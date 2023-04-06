@@ -2,6 +2,7 @@ const Discord = require('discord.js');
 const ytdl = require('ytdl-core');
 const client = new Discord.Client();
 const { prefix, token } = require('./config.json');
+const config = require('./config.json');
 
 const queue = new Map();
 
