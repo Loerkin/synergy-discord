@@ -125,7 +125,6 @@ function play(guild, song) {
             console.error(error);
         });
     dispatcher.setVolumeLogarithmic(serverQueue.volume / 5);
-    serverQueue.textChannel.send(Začíná přehrát: ** $ {
-        song.title
-    } ** );
+    serverQueue.textChannel.send(Zacina prehravat: ** $ {song.title} **
+        );
 }
