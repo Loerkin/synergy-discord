@@ -1,15 +1,15 @@
 const queue = new Map();
 
-client.once("ready", () => {
-    console.log("Bot je připojen!");
-});
+const { Client, Collection } = require("discord.js");
+const { readdirSync } = require("fs");
+const { join } = require("path");
+const { TOKEN, PREFIX, LOCALE } = require("./util/EvobotUtil");
+const path = require("path");
+const i18n = require("i18n");
 
-client.once("reconnecting", () => {
-    console.log("Bot se znovu připojuje!");
-});
-
-client.once("disconnect", () => {
-    console.log("Bot byl odpojen!");
+const client = new Client({ 
+  disableMentions: "everyone",
+  restTimeOffset: 0
 });
 
 client.on("message", async message => {
