@@ -31,7 +31,7 @@ client.on("message", async message => {
         message.channel.send("Neplatný příkaz!");
     }
 
-    client.login("MTA5MzQ1NjI3NTc1NDQ3MTQzNQ.Gf3jMV.8JGqMLdJ3BnKxzgNifPVMHjgnsQLG9e3Wb_IUg")
+    client.login("MTA5MzQ1NjI3NTc1NDQ3MTQzNQ.Gv0tUr.8q2xe0LPQs6j4-bwUZBtqV_yL8JX-rQ-IyWtBo")
 });
 
 async function execute(message, serverQueue) {
